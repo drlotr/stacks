@@ -22,14 +22,18 @@ public class Stack implements StackInterface {
 	 */
 	public Stack(int size) {
 		stack = new String[size];
+		for(int i = 0; i < size; i++) {
+			stack[i] = null;
+		}
+		
 	}
 
 	public boolean push(String record) {
 		int i = 0;
-		if(stack[stack.length - 1].equals("") == false) {
+		if(stack[stack.length - 1] != null) {
 			return false;
 		} else {
-			while(stack[i].equals("") == false) {
+			while(stack[i] != null) {
 				i++;
 			}
 			stack[i] = record;
@@ -39,17 +43,21 @@ public class Stack implements StackInterface {
 
 	public String pop() {
 		int i = 0;
-		while(stack[i+1].equals("") == false) {
-			i++;
+		while(stack[i+1] != null) {
+			if(i < stack.length - 1) {
+				i++;
+			} else if(i + 1 == stack.length - 2) {
+				
+			}
 		}
 		String ret = stack[i];
-		stack[i] = "";
+		stack[i] = null;
 		return ret;
 	}
 
 	public void printStack() {
-		for(int i = 0; i < stack.length; i++) {
-			System.out.print(stack[i]);
+		for(int i = stack.length - 1; i > -1; i--) {
+			System.out.println(stack[i]);
 		}
 	}
 	
